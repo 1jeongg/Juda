@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'com.example.juda'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.juda"
@@ -30,6 +30,7 @@ android {
 
 dependencies {
 
+    implementation 'com.kakao.sdk:v2-user:2.8.6'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
