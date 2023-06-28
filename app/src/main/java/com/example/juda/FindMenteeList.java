@@ -7,10 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class FindMenteeList extends AppCompatActivity {
 
     EditText search_ET;
     Button search_BTN, filter_BTN;
+    FloatingActionButton newPost_FAB;
     ListView findMentee_LV;
 
     @Override
@@ -30,8 +33,7 @@ public class FindMenteeList extends AppCompatActivity {
         search_ET = findViewById(R.id.search_ET_FindMenteeList);
         search_BTN = findViewById(R.id.search_BTN_FindMenteeList);
         filter_BTN = findViewById(R.id.filter_BTN_FindMenteeList);
+        newPost_FAB = findViewById(R.id.newPost_FAB_FindMenteeList);
         findMentee_LV = findViewById(R.id.findMentee_LV_FindMenteeList);
     }
-
-
 }
