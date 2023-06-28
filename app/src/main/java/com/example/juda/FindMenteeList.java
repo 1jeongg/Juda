@@ -1,7 +1,6 @@
 package com.example.juda;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,10 +10,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FindMenteeList extends AppCompatActivity {
 
-    EditText search_ET;
-    Button search_BTN, filter_BTN;
-    FloatingActionButton newPost_FAB;
-    ListView findMentee_LV;
+    private EditText search_ET;
+    private Button search_BTN, filter_BTN;
+    private FloatingActionButton newPost_FAB;
+    private ListView findMentee_LV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
