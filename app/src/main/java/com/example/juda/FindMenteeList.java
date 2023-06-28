@@ -68,6 +68,10 @@ public class FindMenteeList extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     menteePostHashMap.put(snapshot.getKey(), (String)snapshot.getValue());
                 }
+
+                /*
+                ValueEventListener는 비동기 처리 되므로, 이 부분에 처리할 코드를 작성해야합니다!
+                 */
             }
 
             @Override
