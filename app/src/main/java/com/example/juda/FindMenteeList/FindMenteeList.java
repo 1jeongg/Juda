@@ -10,27 +10,26 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.juda.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FindMenteeList extends AppCompatActivity {
 
-    final private DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+    final private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FindMenteeListAdapter mAdapter = null;
     private EditText search_ET;
     private Button search_BTN, filter_BTN;
     private FloatingActionButton newPost_FAB;
     private ListView findMentee_LV;
     private List<String> menteePostKey = null;
-    private List<String> menteePostTitle = null;
+    private List<String> menteePostTitle = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +49,10 @@ public class FindMenteeList extends AppCompatActivity {
         newPost_FAB = findViewById(R.id.newPost_FAB_FindMenteeList);
         findMentee_LV = findViewById(R.id.findMentee_LV_FindMenteeList);
 
-//        getMenteePostList();
+        getMenteePostList();
 
 //        show sample data
-        setSampleAdapter();
+//        setSampleAdapter();
     }
 
     /**
@@ -78,29 +77,29 @@ public class FindMenteeList extends AppCompatActivity {
      * Get all data under 'MenteePost' and save all at menteePostHashMap
      */
     private void getMenteePostList() {
-        Query query = mDatabaseReference.child("MenteePost");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    menteePostKey.add(snapshot.getKey());
-                    menteePostTitle.add((String)snapshot.getValue());
-                }
+        db.collection("user")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<String> temp;
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("PIGMONGKEY", document.getId() + " => " + document.getData());
+                                Log.d("PIGMONGKEY", document.getId() + " => " + document.getData());
+                                menteePostTitle.add(document.getId());
+                            }
+                            setMenteePostListAdapter();
+                        } else {
+                            Log.d("PIGMONGKEY", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
 
-//                ValueEventListener는 비동기 처리 되므로, 이 부분에 처리할 코드를 작성해야합니다!
+    }
 
-
-                mAdapter = new FindMenteeListAdapter(getApplicationContext(), menteePostTitle);
-                findMentee_LV.setAdapter(mAdapter); //FindMenteeList.java에서 코딩 필요합니다 - 그 전까지는 샘플 데이터를 출력하겠습니다!
-
-
-//                ValueEventListener는 비동기 처리 되므로, 이 부분에 처리할 코드를 작성해야합니다!
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("PIGMONGKEY", "FindMenteeList.java_getMenteePostList() - onCancelled");
-            }
-        });
+    private void setMenteePostListAdapter() {
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menteePostTitle);
+        findMentee_LV.setAdapter(mAdapter);
     }
 }
