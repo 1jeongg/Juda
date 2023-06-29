@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -57,6 +59,7 @@ public class FindMenteeList extends AppCompatActivity {
         format = new SimpleDateFormat("yyyy. MM. dd");
 
         getMenteePostList();
+        setOnclick();
     }
 
     /**
@@ -70,8 +73,6 @@ public class FindMenteeList extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<String> temp;
-                            int i = 0;
                             List<FindMenteePostData> dbData = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("PIGMONGKEY", document.getId() + " => " + document.get("date"));
@@ -97,8 +98,24 @@ public class FindMenteeList extends AppCompatActivity {
 
     }
 
+    /**
+     * Set adapter to findMentee_LV
+     * @param dbData - FindMenteePostData List
+     */
     private void setMenteePostListAdapter(List<FindMenteePostData> dbData) {
         mAdapter = new FindMenteeListAdapter(getApplicationContext(), dbData);
         findMentee_LV.setAdapter(mAdapter);
+    }
+
+    /**
+     * This method set onclick method to each item
+     */
+    private void setOnclick() {
+        findMentee_LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
     }
 }
