@@ -10,12 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.juda.PostInfo.PostInfo;
@@ -38,8 +35,7 @@ public class FindMenteeList extends AppCompatActivity {
 
     private Toolbar toolbar;
     final private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private EditText search_ET;
-    private Button search_BTN, filter_BTN;
+    private Button filter_BTN;
     private FloatingActionButton newPost_FAB;
     private ListView findMentee_LV;
     private FindMenteeListAdapter mAdapter = null;
@@ -62,15 +58,13 @@ public class FindMenteeList extends AppCompatActivity {
         toolbar = findViewById(R.id.basic_tool_bar_FindMenteeList);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
-
-        search_ET = findViewById(R.id.search_ET_FindMenteeList);
-        search_BTN = findViewById(R.id.search_BTN_FindMenteeList);
         filter_BTN = findViewById(R.id.filter_BTN_FindMenteeList);
         newPost_FAB = findViewById(R.id.newPost_FAB_FindMenteeList);
         findMentee_LV = findViewById(R.id.findMentee_LV_FindMenteeList);
 
         format = new SimpleDateFormat("yyyy. MM. dd");
-//         getMenteePostList();
+
+        getMenteePostList();
         setOnClick();
     }
 
@@ -97,9 +91,7 @@ public class FindMenteeList extends AppCompatActivity {
                                         (String) document.get("author"),
                                         (String) document.get("title"),
                                         (String) document.get("content"),
-                                        format.format(temp_time),
-                                        (String) document.get("tag1"),
-                                        (String) document.get("tag2")
+                                        format.format(temp_time)
                                 ));
                             }
                             setMenteePostListAdapter(dbData);
@@ -120,6 +112,14 @@ public class FindMenteeList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FindMenteeList.this, PostInfo.class);
                 intent.putExtra("ID", mAdapter.getItem(position).getID());
+                startActivity(intent);
+            }
+        });
+
+        filter_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FindMenteeList.this, PostInfo.class);
                 startActivity(intent);
             }
         });

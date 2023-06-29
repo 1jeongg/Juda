@@ -14,32 +14,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/search_ET_FindMenteeList"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="8"
-                android:hint="검색할 내용을 입력하세요!" />
-
-            <Button
-                android:id="@+id/search_BTN_FindMenteeList"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="검색" />
-
-        </LinearLayout>
+            android:layout_marginBottom="18dp"
+            android:text="멘토찾기"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,6 +36,7 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
                 android:scrollbars="none">
 
                 <LinearLayout
@@ -58,47 +46,56 @@
 
                     <Button
                         android:id="@+id/filter_BTN_FindMenteeList"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="68dp"
+                        android:layout_height="21dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/background_button_for_filter"
                         android:text="필터"
                         android:textColor="#000000" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="68dp"
+                        android:layout_height="21dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/background_button_for_filter"
+                        android:text="필터"
                         android:textColor="#000000"
                         android:visibility="visible" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="68dp"
+                        android:layout_height="21dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/background_button_for_filter"
+                        android:text="필터"
                         android:textColor="#000000"
                         android:visibility="visible" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="68dp"
+                        android:layout_height="21dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/background_button_for_filter"
+                        android:text="필터"
                         android:textColor="#000000"
                         android:visibility="visible" />
 
                     <Button
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_width="68dp"
+                        android:layout_height="21dp"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:background="@drawable/background_button_for_filter"
+                        android:text="필터"
                         android:textColor="#000000"
                         android:visibility="visible" />
 
@@ -122,6 +119,6 @@
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:contentDescription="add floating button"
-        android:src="@drawable/ic_add" />
+        android:src="@drawable/new_post_button_icon" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
