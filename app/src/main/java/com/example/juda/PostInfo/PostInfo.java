@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -54,12 +55,19 @@ public class PostInfo extends AppCompatActivity {
         getIntentData();
     }
 
+    /**
+     * 이전페이지에서 보낸 데이터 받는 메소드
+     */
     private void getIntentData() {
         Intent intent = getIntent();
         POST_ID = intent.getStringExtra("ID");
         getPostInfo();
     }
 
+    /**
+     * Get Post information from firebase
+     * And call setContects to set Text
+     */
     private void getPostInfo() {
         db.collection("postProvider")
                 .document(POST_ID)
@@ -91,10 +99,33 @@ public class PostInfo extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Set Text
+     * @param dbData -> FindMenteePostData
+     */
     private void setContents(FindMenteePostData dbData) {
         writer_TV.setText(dbData.getWriter());
         title_TV.setText(dbData.getTitle());
         date_TV.setText(dbData.getDate());
         contents_TV.setText(dbData.getContents());
+    }
+
+    /**
+     * Set OnClickMethod
+     */
+    private void setOnClick() {
+        signup_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        inquire_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

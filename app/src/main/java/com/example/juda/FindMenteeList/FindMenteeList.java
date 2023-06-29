@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.juda.MainActivity;
 import com.example.juda.PostInfo.PostInfo;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,8 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import kotlin.jvm.functions.FunctionN;
 
 public class FindMenteeList extends AppCompatActivity {
 
@@ -63,7 +60,7 @@ public class FindMenteeList extends AppCompatActivity {
         format = new SimpleDateFormat("yyyy. MM. dd");
 
         getMenteePostList();
-        setOnclick();
+        setOnClick();
     }
 
     /**
@@ -115,7 +112,7 @@ public class FindMenteeList extends AppCompatActivity {
     /**
      * This method set onclick method to each item
      */
-    private void setOnclick() {
+    private void setOnClick() {
         findMentee_LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
