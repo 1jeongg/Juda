@@ -1,10 +1,11 @@
 package com.example.juda.FindMenteeList;
 
 public class FindMenteePostData {
-    private String writer, title, date, contents, tag1, tag2;
+    private String ID, writer, title, date, contents, tag1, tag2;
 
 
-    public FindMenteePostData(String writer, String title, String contents, String date, String tag1, String tag2) {
+    public FindMenteePostData(String ID, String writer, String title, String contents, String date, String tag1, String tag2) {
+        this.ID = ID;
         this.writer = writer;
         this.title = title;
         this.date = date;
@@ -12,6 +13,8 @@ public class FindMenteePostData {
         this.tag1 = tag1;
         this.tag2 = tag2;
     }
+
+    public String getID() { return ID; }
 
     public String getWriter() {
         return writer;

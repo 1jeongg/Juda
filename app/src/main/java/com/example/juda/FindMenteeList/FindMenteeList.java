@@ -85,6 +85,7 @@ public class FindMenteeList extends AppCompatActivity {
                                 Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
                                 dbData.add(new FindMenteePostData(
+                                        (String) document.getId(),
                                         (String) document.get("author"),
                                         (String) document.get("title"),
                                         (String) document.get("content"),
@@ -119,7 +120,7 @@ public class FindMenteeList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FindMenteeList.this, PostInfo.class);
-                intent.putExtra("title", mAdapter.getItem(position).getTitle());
+                intent.putExtra("ID", mAdapter.getItem(position).getID());
                 startActivity(intent);
             }
         });
