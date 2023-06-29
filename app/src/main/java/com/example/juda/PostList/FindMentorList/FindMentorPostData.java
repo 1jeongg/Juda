@@ -1,42 +1,42 @@
 package com.example.juda.PostList.FindMentorList;
 
 public class FindMentorPostData {
-        private String ID, writer, title, date, contents, tag1, tag2;
+    private String mPostID;
+    private String mWriterID;
+    private String mWriterName;
+    private String mWriteTime;
+    private String mTitle;
+    private String mContent;
 
+    public FindMentorPostData(String post_id, String writer_id, String writer_name, String write_time, String title, String contents) {
+        this.mPostID = post_id;
+        this.mWriterID = writer_id;
+        this.mWriterName = writer_name;
+        this.mWriteTime = write_time;
+        this.mTitle = title;
+        this.mContent = contents;
+    }
 
-        public FindMentorPostData(String ID, String writer, String title, String contents, String date) {
-            this.ID = ID;
-            this.writer = writer;
-            this.title = title;
-            this.date = date;
-            this.contents = contents;
-//        this.tag1 = tag1;
-//        this.tag2 = tag2;
-        }
+    public String getmPostID() {
+        return mPostID;
+    }
 
-        public String getID() { return ID; }
+    public String getmWriterID() {
+        return mWriterID;
+    }
 
-        public String getWriter() {
-            return writer;
-        }
+    public String getmWriterName() {
+        return mWriterName;
+    }
 
-        public String getTitle() {
-            return title;
-        }
+    public String getmWriteTime() {
+        return mWriteTime;
+    }
 
-        public String getDate() {
-            return date;
-        }
-
-        public String getContents() {
-            return contents;
-        }
-
-        public String getTag1() {
-            return tag1;
-        }
-
-        public String getTag2() {
-            return tag2;
-        }
+    public String getmTitle() {
+        return mTitle;
+    }
+    public String getmContent() {
+        return mContent;
+    }
 }

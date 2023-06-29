@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.juda.PostList.FindMenteeList.FindMenteePostData;
 import com.example.juda.PostList.FindMentorList.FindMentorList;
 import com.example.juda.PostList.FindMentorList.FindMentorPostData;
 import com.example.juda.R;
@@ -74,7 +75,7 @@ public class FindMentorPostInfo extends AppCompatActivity {
      * And call setContects to set Text
      */
     private void getPostInfo() {
-        db.collection("postRequest")
+        db.collection("FindMentor")
                 .document(POST_ID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -82,19 +83,18 @@ public class FindMentorPostInfo extends AppCompatActivity {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
-                            Log.d("PIGMONGKEY", task.getResult().get("title").toString());
 
-                            Timestamp temp_timestamp = (Timestamp) document.get("date");
+                            Timestamp temp_timestamp = (Timestamp) document.get("WriteTime");
                             Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
                             setContents(new FindMentorPostData(
-                                            (String) document.getId(),
-                                            (String) document.get("author"),
-                                            (String) document.get("title"),
-                                            (String) document.get("content"),
-                                            format.format(temp_time)
-                                    )
-                            );
+                                    (String) document.getId(),
+                                    (String) document.get("WriterID"),
+                                    (String) document.get("WriterName"),
+                                    format.format(temp_time),
+                                    (String) document.get("Title"),
+                                    (String) document.get("Contents")
+                            ));
                         } else {
                             Log.d("PIGMONGKEY", "Get data fail");
                         }
@@ -107,10 +107,10 @@ public class FindMentorPostInfo extends AppCompatActivity {
      * @param dbData -> FindMenteePostData
      */
     private void setContents(FindMentorPostData dbData) {
-        writer_TV.setText(dbData.getWriter());
-        title_TV.setText(dbData.getTitle());
-        date_TV.setText(dbData.getDate());
-        contents_TV.setText(dbData.getContents());
+        writer_TV.setText(dbData.getmWriterName());
+        title_TV.setText(dbData.getmTitle());
+        date_TV.setText(dbData.getmWriteTime());
+        contents_TV.setText(dbData.getmContent());
     }
 
     /**
