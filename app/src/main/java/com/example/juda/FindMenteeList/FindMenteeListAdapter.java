@@ -30,7 +30,7 @@ public class FindMenteeListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public FindMenteePostData getItem(int position) {
         return data.get(position);
     }
 
