@@ -6,4 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".NewPost.FindMenteePost.NewFindMenteePost">
 
+    <include
+        android:id="@+id/basic_tool_bar_NewFindMentee"
+        layout="@layout/tool_bar_basic" />
+
+    <LinearLayout
+        android:id="@+id/margin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/basic_tool_bar_NewFindMentee">
+
+        <EditText
+            android:id="@+id/title_ET_NFMentee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="제목"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/contents_ET_NFMentee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint=" 본문"
+            android:textSize="16sp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

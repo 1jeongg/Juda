@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.juda.NewPost.FindMenteePost.NewFindMenteePost;
 import com.example.juda.PostInfo.FindMenteePostInfo.FindMenteePostInfo;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -113,6 +114,14 @@ public class FindMenteeList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FindMenteeList.this, FindMenteePostInfo.class);
                 intent.putExtra("ID", mAdapter.getItem(position).getID());
+                startActivity(intent);
+            }
+        });
+
+        newPost_FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FindMenteeList.this, NewFindMenteePost.class);
                 startActivity(intent);
             }
         });
