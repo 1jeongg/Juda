@@ -38,7 +38,7 @@ public class FindMentorList extends AppCompatActivity {
     private Button filter_BTN;
     private FloatingActionButton newPost_FAB;
     private ListView findMentor_LV;
-    private FindMenteeListAdapter mAdapter = null;
+    private FindMentorListAdapter mAdapter = null;
     private SimpleDateFormat format;
 
     @Override
@@ -68,7 +68,7 @@ public class FindMentorList extends AppCompatActivity {
 
     /**
      * This method gets data from firebase
-     * Get all data under 'MenteePost' and save all at menteePostHashMap
+     * Get all data under 'MentorPost' and save all at menteePostHashMap
      */
     private void getMenteePostList() {
         db.collection("postRequest")
@@ -77,14 +77,14 @@ public class FindMentorList extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            List<FindMenteePostData> dbData = new ArrayList<>();
+                            List<FindMentorPostData> dbData = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("PIGMONGKEY", document.getId() + " => " + document.get("date"));
 
                                 Timestamp temp_timestamp = (Timestamp) document.get("date");
                                 Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
-                                dbData.add(new FindMenteePostData(
+                                dbData.add(new FindMentorPostData(
                                         (String) document.getId(),
                                         (String) document.get("author"),
                                         (String) document.get("title"),
@@ -116,11 +116,11 @@ public class FindMentorList extends AppCompatActivity {
     }
 
     /**
-     * Set adapter to findMentee_LV
-     * @param dbData - FindMenteePostData List
+     * Set adapter to findMentor_LV
+     * @param dbData - FindMentorPostData List
      */
-    private void setMenteePostListAdapter(List<FindMenteePostData> dbData) {
-        mAdapter = new FindMenteeListAdapter(getApplicationContext(), dbData);
+    private void setMenteePostListAdapter(List<FindMentorPostData> dbData) {
+        mAdapter = new FindMentorListAdapter(getApplicationContext(), dbData);
         findMentor_LV.setAdapter(mAdapter);
     }
 
