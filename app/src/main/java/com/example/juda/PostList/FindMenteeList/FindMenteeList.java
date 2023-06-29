@@ -75,7 +75,7 @@ public class FindMenteeList extends AppCompatActivity {
      * Get all data under 'MenteePost' and save all at menteePostHashMap
      */
     private void getMenteePostList() {
-        db.collection("postProvider")
+        db.collection("FindMentee")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -85,15 +85,16 @@ public class FindMenteeList extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("PIGMONGKEY", document.getId() + " => " + document.get("date"));
 
-                                Timestamp temp_timestamp = (Timestamp) document.get("date");
+                                Timestamp temp_timestamp = (Timestamp) document.get("WriteTime");
                                 Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
                                 dbData.add(new FindMenteePostData(
                                         (String) document.getId(),
-                                        (String) document.get("author"),
-                                        (String) document.get("title"),
-                                        (String) document.get("content"),
-                                        format.format(temp_time)
+                                        (String) document.get("WriterID"),
+                                        (String) document.get("WriterName"),
+                                        format.format(temp_time),
+                                        (String) document.get("Title"),
+                                        (String) document.get("Contents")
                                 ));
                             }
                             setMenteePostListAdapter(dbData);
@@ -113,7 +114,7 @@ public class FindMenteeList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FindMenteeList.this, FindMenteePostInfo.class);
-                intent.putExtra("ID", mAdapter.getItem(position).getID());
+                intent.putExtra("ID", mAdapter.getItem(position).getmPostID());
                 startActivity(intent);
             }
         });

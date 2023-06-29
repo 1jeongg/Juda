@@ -50,10 +50,10 @@ public class FindMenteeListAdapter extends BaseAdapter {
         writer = view.findViewById(R.id.writer_TV_ListViewLayout);
         time = view.findViewById(R.id.write_time_TV_ListViewLayout);
 
-        title.setText(data.get(position).getTitle());
-        contents.setText(data.get(position).getContents());
-        writer.setText(data.get(position).getWriter());
-        time.setText(data.get(position).getDate());
+        title.setText(data.get(position).getmTitle());
+        contents.setText(data.get(position).getmContent());
+        writer.setText(data.get(position).getmWriterName());
+        time.setText(data.get(position).getmWriteTime());
 
         return view;
     }
