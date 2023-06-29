@@ -61,7 +61,7 @@ public class NewFindMenteePost extends AppCompatActivity {
         testData.put("test", "test");
 
         db.collection("category")
-                .document("career")
+                .document("test")
                 .set(testData)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
