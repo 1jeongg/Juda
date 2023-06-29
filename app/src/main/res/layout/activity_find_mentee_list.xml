@@ -56,7 +56,8 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:text="필터" />
+                        android:text="필터"
+                        android:textColor="#000000" />
 
                     <Button
                         android:layout_width="0dp"
@@ -64,6 +65,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:visibility="visible" />
 
                     <Button
@@ -72,6 +74,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:visibility="visible" />
 
                     <Button
@@ -80,6 +83,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:visibility="visible" />
 
                     <Button
@@ -88,6 +92,7 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
+                        android:textColor="#000000"
                         android:visibility="visible" />
 
                 </LinearLayout>
