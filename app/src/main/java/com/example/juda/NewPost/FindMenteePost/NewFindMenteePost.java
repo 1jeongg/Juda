@@ -16,9 +16,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.juda.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class NewFindMenteePost extends AppCompatActivity {
 
+    final private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Toolbar toolbar;
     private EditText title_ET, contents_ET;
     private Button confirm_BTN;
@@ -45,10 +54,27 @@ public class NewFindMenteePost extends AppCompatActivity {
     }
 
     /**
-     *
+     * Firebase에 데이터 입력
      */
     public void sendToDatabase() {
+        Map<String, Object> testData = new HashMap<>();
+        testData.put("test", "test");
 
+        db.collection("category")
+                .document("career")
+                .set(testData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d("PIGMONGKEY", "success");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("PIGMONGKEY", "success");
+                    }
+                });
     }
 
     /**
@@ -63,7 +89,7 @@ public class NewFindMenteePost extends AppCompatActivity {
                 /*
                 등록 버튼 로직
                  */
-                Log.d("PIGMONGKEY", "confirm");
+                sendToDatabase();
             }
         });
         mAlertBuilder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
