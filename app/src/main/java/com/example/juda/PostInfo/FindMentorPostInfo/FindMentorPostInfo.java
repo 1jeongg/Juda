@@ -1,4 +1,4 @@
-package com.example.juda.FindMentorPostInfo;
+package com.example.juda.PostInfo.FindMentorPostInfo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.juda.FindMenteeList.FindMenteeList;
-import com.example.juda.FindMenteeList.FindMenteePostData;
-import com.example.juda.FindMenteePostInfo.FindMenteePostInfo;
-import com.example.juda.FindMentorList.FindMentorList;
-import com.example.juda.FindMentorList.FindMentorPostData;
+import com.example.juda.PostList.FindMentorList.FindMentorList;
+import com.example.juda.PostList.FindMentorList.FindMentorPostData;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

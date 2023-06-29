@@ -1,8 +1,4 @@
-/*
-This adapter class is for findMentee_LV in FindMenteeList.java
- */
-
-package com.example.juda.FindMenteeList;
+package com.example.juda.PostList.FindMentorList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,11 +11,11 @@ import com.example.juda.R;
 
 import java.util.List;
 
-public class FindMenteeListAdapter extends BaseAdapter {
+public class FindMentorListAdapter extends BaseAdapter {
     private Context mContext = null;
-    List<FindMenteePostData> data;
+    List<FindMentorPostData> data;
 
-    public FindMenteeListAdapter(Context mContext, List<FindMenteePostData> data) {
+    public FindMentorListAdapter(Context mContext, List<FindMentorPostData> data) {
         this.mContext = mContext;
         this.data = data;
     }
@@ -30,7 +26,7 @@ public class FindMenteeListAdapter extends BaseAdapter {
     }
 
     @Override
-    public FindMenteePostData getItem(int position) {
+    public FindMentorPostData getItem(int position) {
         return data.get(position);
     }
 

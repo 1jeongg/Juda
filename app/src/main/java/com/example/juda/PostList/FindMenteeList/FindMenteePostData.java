@@ -1,4 +1,4 @@
-package com.example.juda.FindMenteeList;
+package com.example.juda.PostList.FindMenteeList;
 
 public class FindMenteePostData {
     private String ID, writer, title, date, contents, tag1, tag2;

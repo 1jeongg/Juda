@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FindMentorList.FindMentorList">
+    tools:context=".PostList.FindMentorList.FindMentorList">
 
     <include
         android:id="@+id/basic_tool_bar_FindMentorList"

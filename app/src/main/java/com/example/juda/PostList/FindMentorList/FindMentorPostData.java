@@ -1,4 +1,4 @@
-package com.example.juda.FindMentorList;
+package com.example.juda.PostList.FindMentorList;
 
 public class FindMentorPostData {
         private String ID, writer, title, date, contents, tag1, tag2;

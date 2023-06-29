@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindMenteePostInfo.FindMenteePostInfo">
+    tools:context=".PostInfo.FindMenteePostInfo.FindMenteePostInfo">
 
     <include
         android:id="@+id/basic_tool_bar_PostInfo"
