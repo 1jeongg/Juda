@@ -35,4 +35,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="336dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/navigator_round_drawable"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@color/navigation_color"
+        app:itemTextColor="@color/navigation_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_bar_menu" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
