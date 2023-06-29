@@ -20,12 +20,10 @@
             android:exported="false" />
         <activity
             android:name=".FindMenteePostInfo.FindMenteePostInfo"
-            android:exported="false"
-            android:parentActivityName=".FindMenteeList.FindMenteeList" />
+            android:exported="false" />
         <activity
             android:name=".FindMenteeList.FindMenteeList"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true" >
