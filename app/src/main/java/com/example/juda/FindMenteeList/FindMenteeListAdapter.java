@@ -17,21 +17,21 @@ import java.util.List;
 
 public class FindMenteeListAdapter extends BaseAdapter {
     private Context mContext = null;
-    FindMenteePostData data[];
+    List<FindMenteePostData> data;
 
-    public FindMenteeListAdapter(Context mContext, FindMenteePostData[] data) {
+    public FindMenteeListAdapter(Context mContext, List<FindMenteePostData> data) {
         this.mContext = mContext;
         this.data = data;
     }
 
     @Override
     public int getCount() {
-        return data.length;
+        return data.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return data[position];
+        return data.get(position);
     }
 
     @Override
@@ -50,10 +50,10 @@ public class FindMenteeListAdapter extends BaseAdapter {
         writer = view.findViewById(R.id.writer_TV_ListViewLayout);
         time = view.findViewById(R.id.write_time_TV_ListViewLayout);
 
-        title.setText(data[position].getTitle());
-        contents.setText(data[position].getContents());
-        writer.setText(data[position].getWriter());
-        time.setText(data[position].getDate());
+        title.setText(data.get(position).getTitle());
+        contents.setText(data.get(position).getContents());
+        writer.setText(data.get(position).getWriter());
+        time.setText(data.get(position).getDate());
 
         return view;
     }
