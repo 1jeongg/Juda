@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Juda"
         tools:targetApi="31">
         <activity
-            android:name=".NewPost.FindMenteePost.NewFindMenteePost"
-            android:parentActivityName=".PostList.FindMenteeList.FindMenteeList"
+            android:name=".NewPost.FindMentorPost.NewFindMentorPost"
             android:exported="false" />
+        <activity
+            android:name=".NewPost.FindMenteePost.NewFindMenteePost"
+            android:exported="false"
+            android:parentActivityName=".PostList.FindMenteeList.FindMenteeList" />
         <activity
             android:name=".PostInfo.FindMentorPostInfo.FindMentorPostInfo"
             android:exported="false"

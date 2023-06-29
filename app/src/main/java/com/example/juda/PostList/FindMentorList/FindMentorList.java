@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.juda.NewPost.FindMentorPost.NewFindMentorPost;
 import com.example.juda.PostInfo.FindMentorPostInfo.FindMentorPostInfo;
 import com.example.juda.PostList.FindMenteeList.FindMenteePostData;
 import com.example.juda.R;
@@ -110,6 +111,14 @@ public class FindMentorList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FindMentorList.this, FindMentorPostInfo.class);
                 intent.putExtra("ID", mAdapter.getItem(position).getmPostID());
+                startActivity(intent);
+            }
+        });
+
+        newPost_FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FindMentorList.this, NewFindMentorPost.class);
                 startActivity(intent);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.juda.NewPost.FindMenteePost;
+package com.example.juda.NewPost.FindMentorPost;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.juda.NewPost.FindMenteePost.NewFindMenteePost;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewFindMenteePost extends AppCompatActivity {
+public class NewFindMentorPost extends AppCompatActivity {
 
     final private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Toolbar toolbar;
@@ -37,20 +38,20 @@ public class NewFindMenteePost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_find_mentee_post);
+        setContentView(R.layout.activity_new_find_mentor_post);
 
         Init();
     }
 
     private void Init() {
-        toolbar = findViewById(R.id.basic_tool_bar_NewFindMentee);
+        toolbar = findViewById(R.id.basic_tool_bar_NewFindMentor);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        title_ET = findViewById(R.id.title_ET_NFMentee);
-        contents_ET = findViewById(R.id.contents_ET_NFMentee);
-        confirm_BTN = findViewById(R.id.confirm_BTN_NFMentee);
+        title_ET = findViewById(R.id.title_ET_NFMentor);
+        contents_ET = findViewById(R.id.contents_ET_NFMentor);
+        confirm_BTN = findViewById(R.id.confirm_BTN_NFMentor);
 
         setOnClick();
     }
@@ -69,7 +70,7 @@ public class NewFindMenteePost extends AppCompatActivity {
         testData.put("Title", title_ET.getText().toString());
         testData.put("Contents", contents_ET.getText().toString());
 
-        db.collection("FindMentee")
+        db.collection("FindMentor")
                 .document()
                 .set(testData)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -91,7 +92,7 @@ public class NewFindMenteePost extends AppCompatActivity {
      * 최종 확인 AlertDialog 띄우는 method
      */
     public void showCheckAlert() {
-        AlertDialog.Builder mAlertBuilder = new AlertDialog.Builder(NewFindMenteePost.this);
+        AlertDialog.Builder mAlertBuilder = new AlertDialog.Builder(NewFindMentorPost.this);
         mAlertBuilder.setMessage("등록 하시겠습니까?");
         mAlertBuilder.setPositiveButton("등록", new DialogInterface.OnClickListener() {
             @Override
