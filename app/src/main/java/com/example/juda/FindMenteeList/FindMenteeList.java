@@ -58,6 +58,7 @@ public class FindMenteeList extends AppCompatActivity {
         toolbar = findViewById(R.id.basic_tool_bar_FindMenteeList);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         filter_BTN = findViewById(R.id.filter_BTN_FindMenteeList);
         newPost_FAB = findViewById(R.id.newPost_FAB_FindMenteeList);
         findMentee_LV = findViewById(R.id.findMentee_LV_FindMenteeList);
@@ -149,8 +150,8 @@ public class FindMenteeList extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.search:
                 return true;
-            default:
-                return true;
         }
+
+        return false;
     }
 }

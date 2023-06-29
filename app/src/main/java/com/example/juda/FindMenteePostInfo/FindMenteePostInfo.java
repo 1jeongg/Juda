@@ -147,11 +147,9 @@ public class FindMenteePostInfo extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.complite:
-            case android.R.id.home:
                 Intent intent = new Intent(FindMenteePostInfo.this, FindMenteeList.class);
                 startActivity(intent);
-            default:
-                return true;
         }
+        return false;
     }
 }

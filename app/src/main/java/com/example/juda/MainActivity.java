@@ -9,15 +9,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.juda.FindMenteeList.FindMenteeList;
+import com.example.juda.FindMentorList.FindMentorList;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private Button toFindMentee, toFindMentor;
 
-    TextView test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +34,24 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 //        FindMenteeList로 이동하기 위한 테스트 리스너
+        toFindMentee = findViewById(R.id.toFindMentee);
+        toFindMentor = findViewById(R.id.toFindMentor);
         testListener();
     }
 
     private void testListener() {
-        test = findViewById(R.id.test);
-        test.setOnClickListener(new View.OnClickListener() {
+        toFindMentee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, FindMenteeList.class);
+                startActivity(intent);
+            }
+        });
+
+        toFindMentor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FindMentorList.class);
                 startActivity(intent);
             }
         });

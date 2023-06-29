@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.juda.FindMenteePostInfo.FindMenteePostInfo;
+import com.example.juda.FindMentorPostInfo.FindMentorPostInfo;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -54,6 +55,7 @@ public class FindMentorList extends AppCompatActivity {
         toolbar = findViewById(R.id.basic_tool_bar_FindMentorList);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         filter_BTN = findViewById(R.id.filter_BTN_FindMentorList);
         newPost_FAB = findViewById(R.id.newPost_FAB_FindMentorList);
         findMentor_LV = findViewById(R.id.findMentor_LV_FindMentorList);
@@ -106,7 +108,7 @@ public class FindMentorList extends AppCompatActivity {
         findMentor_LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(FindMentorList.this, FindMenteePostInfo.class);
+                Intent intent = new Intent(FindMentorList.this, FindMentorPostInfo.class);
                 intent.putExtra("ID", mAdapter.getItem(position).getID());
                 startActivity(intent);
             }
@@ -145,8 +147,8 @@ public class FindMentorList extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.search:
                 return true;
-            default:
-                return true;
         }
+
+        return false;
     }
 }
