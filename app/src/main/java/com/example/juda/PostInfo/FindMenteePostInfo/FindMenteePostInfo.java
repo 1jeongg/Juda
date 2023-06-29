@@ -1,4 +1,4 @@
-package com.example.juda.FindMentorPostInfo;
+package com.example.juda.PostInfo.FindMenteePostInfo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.juda.FindMenteeList.FindMenteeList;
-import com.example.juda.FindMenteeList.FindMenteePostData;
-import com.example.juda.FindMenteePostInfo.FindMenteePostInfo;
-import com.example.juda.FindMentorList.FindMentorList;
-import com.example.juda.FindMentorList.FindMentorPostData;
+import com.example.juda.PostList.FindMenteeList.FindMenteeList;
+import com.example.juda.PostList.FindMenteeList.FindMenteePostData;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FindMentorPostInfo extends AppCompatActivity {
+public class FindMenteePostInfo extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView writer_TV, senior_TV, title_TV, date_TV, contents_TV;
@@ -42,7 +39,7 @@ public class FindMentorPostInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_mentor_post_info);
+        setContentView(R.layout.activity_find_mentee_post_info);
         init();
     }
 
@@ -52,13 +49,13 @@ public class FindMentorPostInfo extends AppCompatActivity {
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        writer_TV = findViewById(R.id.writer_TV_MentorPostInfo);
-        senior_TV = findViewById(R.id.senior_TV_MentorPostInfo);
-        title_TV = findViewById(R.id.title_TV_MentorPostInfo);
-        date_TV = findViewById(R.id.date_TV_MentorPostInfo);
-        contents_TV = findViewById(R.id.content_TV_MentorPostInfo);
-        signup_BTN = findViewById(R.id.signup_BTN_MentorPostInfo);
-        inquire_BTN = findViewById(R.id.inquire_BTN_MentorPostInfo);
+        writer_TV = findViewById(R.id.writer_TV_MenteePostInfo);
+        senior_TV = findViewById(R.id.senior_TV_MenteePostInfo);
+        title_TV = findViewById(R.id.title_TV_MenteePostInfo);
+        date_TV = findViewById(R.id.date_TV_MenteePostInfo);
+        contents_TV = findViewById(R.id.content_TV_MenteePostInfo);
+        signup_BTN = findViewById(R.id.signup_BTN_MenteePostInfo);
+        inquire_BTN = findViewById(R.id.inquire_BTN_MenteePostInfo);
         format = new SimpleDateFormat("yyyy. MM. dd");
         getIntentData();
         getPostInfo();
@@ -77,7 +74,7 @@ public class FindMentorPostInfo extends AppCompatActivity {
      * And call setContects to set Text
      */
     private void getPostInfo() {
-        db.collection("postRequest")
+        db.collection("FindMentee")
                 .document(POST_ID)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -85,19 +82,17 @@ public class FindMentorPostInfo extends AppCompatActivity {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
-                            Log.d("PIGMONGKEY", task.getResult().get("title").toString());
-
-                            Timestamp temp_timestamp = (Timestamp) document.get("date");
+                            Timestamp temp_timestamp = (Timestamp) document.get("WriteTime");
                             Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
-                            setContents(new FindMentorPostData(
-                                            (String) document.getId(),
-                                            (String) document.get("author"),
-                                            (String) document.get("title"),
-                                            (String) document.get("content"),
-                                            format.format(temp_time)
-                                    )
-                            );
+                            setContents(new FindMenteePostData(
+                                    (String) document.getId(),
+                                    (String) document.get("WriterID"),
+                                    (String) document.get("WriterName"),
+                                    format.format(temp_time),
+                                    (String) document.get("Title"),
+                                    (String) document.get("Contents")
+                            ));
                         } else {
                             Log.d("PIGMONGKEY", "Get data fail");
                         }
@@ -109,11 +104,11 @@ public class FindMentorPostInfo extends AppCompatActivity {
      * Set Text
      * @param dbData -> FindMenteePostData
      */
-    private void setContents(FindMentorPostData dbData) {
-        writer_TV.setText(dbData.getWriter());
-        title_TV.setText(dbData.getTitle());
-        date_TV.setText(dbData.getDate());
-        contents_TV.setText(dbData.getContents());
+    private void setContents(FindMenteePostData dbData) {
+        writer_TV.setText(dbData.getmWriterName());
+        title_TV.setText(dbData.getmTitle());
+        date_TV.setText(dbData.getmWriteTime());
+        contents_TV.setText(dbData.getmContent());
     }
 
     /**
@@ -136,7 +131,7 @@ public class FindMentorPostInfo extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater ().inflate (R.menu.back_post_no_logo, menu);
+        getMenuInflater ().inflate (R.menu.only_confirm_menu, menu);
         return true;
     }
 
@@ -149,8 +144,8 @@ public class FindMentorPostInfo extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.complite:
-                Intent intent = new Intent(FindMentorPostInfo.this, FindMentorList.class);
+            case R.id.confirm:
+                Intent intent = new Intent(FindMenteePostInfo.this, FindMenteeList.class);
                 startActivity(intent);
         }
         return false;

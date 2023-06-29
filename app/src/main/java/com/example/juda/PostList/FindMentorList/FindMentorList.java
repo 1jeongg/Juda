@@ -1,4 +1,4 @@
-package com.example.juda.FindMentorList;
+package com.example.juda.PostList.FindMentorList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +14,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.juda.FindMenteePostInfo.FindMenteePostInfo;
-import com.example.juda.FindMentorPostInfo.FindMentorPostInfo;
+import com.example.juda.NewPost.FindMentorPost.NewFindMentorPost;
+import com.example.juda.PostInfo.FindMentorPostInfo.FindMentorPostInfo;
+import com.example.juda.PostList.FindMenteeList.FindMenteePostData;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -71,7 +72,7 @@ public class FindMentorList extends AppCompatActivity {
      * Get all data under 'MentorPost' and save all at menteePostHashMap
      */
     private void getMenteePostList() {
-        db.collection("postRequest")
+        db.collection("FindMentor")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -79,17 +80,17 @@ public class FindMentorList extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             List<FindMentorPostData> dbData = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("PIGMONGKEY", document.getId() + " => " + document.get("date"));
 
-                                Timestamp temp_timestamp = (Timestamp) document.get("date");
+                                Timestamp temp_timestamp = (Timestamp) document.get("WriteTime");
                                 Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
                                 dbData.add(new FindMentorPostData(
                                         (String) document.getId(),
-                                        (String) document.get("author"),
-                                        (String) document.get("title"),
-                                        (String) document.get("content"),
-                                        format.format(temp_time)
+                                        (String) document.get("WriterID"),
+                                        (String) document.get("WriterName"),
+                                        format.format(temp_time),
+                                        (String) document.get("Title"),
+                                        (String) document.get("Contents")
                                 ));
                             }
                             setMenteePostListAdapter(dbData);
@@ -109,7 +110,15 @@ public class FindMentorList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FindMentorList.this, FindMentorPostInfo.class);
-                intent.putExtra("ID", mAdapter.getItem(position).getID());
+                intent.putExtra("ID", mAdapter.getItem(position).getmPostID());
+                startActivity(intent);
+            }
+        });
+
+        newPost_FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FindMentorList.this, NewFindMentorPost.class);
                 startActivity(intent);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.juda.FindMenteeList;
+package com.example.juda.PostList.FindMenteeList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.juda.FindMenteePostInfo.FindMenteePostInfo;
+import com.example.juda.NewPost.FindMenteePost.NewFindMenteePost;
+import com.example.juda.PostInfo.FindMenteePostInfo.FindMenteePostInfo;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -74,7 +75,7 @@ public class FindMenteeList extends AppCompatActivity {
      * Get all data under 'MenteePost' and save all at menteePostHashMap
      */
     private void getMenteePostList() {
-        db.collection("postProvider")
+        db.collection("FindMentee")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -84,15 +85,16 @@ public class FindMenteeList extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("PIGMONGKEY", document.getId() + " => " + document.get("date"));
 
-                                Timestamp temp_timestamp = (Timestamp) document.get("date");
+                                Timestamp temp_timestamp = (Timestamp) document.get("WriteTime");
                                 Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
                                 dbData.add(new FindMenteePostData(
                                         (String) document.getId(),
-                                        (String) document.get("author"),
-                                        (String) document.get("title"),
-                                        (String) document.get("content"),
-                                        format.format(temp_time)
+                                        (String) document.get("WriterID"),
+                                        (String) document.get("WriterName"),
+                                        format.format(temp_time),
+                                        (String) document.get("Title"),
+                                        (String) document.get("Contents")
                                 ));
                             }
                             setMenteePostListAdapter(dbData);
@@ -112,7 +114,15 @@ public class FindMenteeList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FindMenteeList.this, FindMenteePostInfo.class);
-                intent.putExtra("ID", mAdapter.getItem(position).getID());
+                intent.putExtra("ID", mAdapter.getItem(position).getmPostID());
+                startActivity(intent);
+            }
+        });
+
+        newPost_FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FindMenteeList.this, NewFindMenteePost.class);
                 startActivity(intent);
             }
         });

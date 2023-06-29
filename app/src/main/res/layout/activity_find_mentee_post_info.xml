@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindMenteePostInfo.FindMenteePostInfo">
+    tools:context=".PostInfo.FindMenteePostInfo.FindMenteePostInfo">
 
     <include
         android:id="@+id/basic_tool_bar_PostInfo"
-        layout="@layout/tool_bar_basic_no_logo" />
+        layout="@layout/tool_bar_basic_no_logo_post_info" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/signup_BTN_MenteePostInfo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -99,7 +99,7 @@
                     android:text="신청하기"
                     android:textColor="#000000" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/inquire_BTN_MenteePostInfo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

@@ -10,7 +10,7 @@
         android:id="@+id/basic_tool_bar_MainActivity"
         layout="@layout/tool_bar_basic" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/toFindMentee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/toFindMentor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
