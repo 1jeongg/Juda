@@ -133,7 +133,7 @@ public class FindMentorPostInfo extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater ().inflate (R.menu.back_post_no_logo, menu);
+        getMenuInflater ().inflate (R.menu.only_confirm_menu, menu);
         return true;
     }
 
@@ -146,7 +146,7 @@ public class FindMentorPostInfo extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.complite:
+            case R.id.confirm:
                 Intent intent = new Intent(FindMentorPostInfo.this, FindMentorList.class);
                 startActivity(intent);
         }
