@@ -16,11 +16,15 @@ import android.widget.ListView;
 
 import com.example.juda.NewPost.FindMentorPost.NewFindMentorPost;
 import com.example.juda.PostInfo.FindMentorPostInfo.FindMentorPostInfo;
+import com.example.juda.PostList.FindMenteeList.FindMenteeList;
 import com.example.juda.PostList.FindMenteeList.FindMenteePostData;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -34,6 +38,7 @@ import java.util.List;
 public class FindMentorList extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private BottomNavigationView navigationView;
     final private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button filter_BTN;
     private FloatingActionButton newPost_FAB;
@@ -60,6 +65,7 @@ public class FindMentorList extends AppCompatActivity {
         filter_BTN = findViewById(R.id.filter_BTN_FindMentorList);
         newPost_FAB = findViewById(R.id.newPost_FAB_FindMentorList);
         findMentor_LV = findViewById(R.id.findMentor_LV_FindMentorList);
+        navigationView = findViewById(R.id.navigation_bar_FindMentorList);
 
         format = new SimpleDateFormat("yyyy. MM. dd");
 
@@ -120,6 +126,21 @@ public class FindMentorList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(FindMentorList.this, NewFindMentorPost.class);
                 startActivity(intent);
+            }
+        });
+
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.find_mentor:
+                        return true;
+                    case R.id.mypage:
+                        return true;
+                    case R.id.to_home:
+                        finish();
+                }
+                return false;
             }
         });
     }

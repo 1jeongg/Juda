@@ -17,10 +17,13 @@ import android.widget.ListView;
 
 import com.example.juda.NewPost.FindMenteePost.NewFindMenteePost;
 import com.example.juda.PostInfo.FindMenteePostInfo.FindMenteePostInfo;
+import com.example.juda.PostList.FindMentorList.FindMentorList;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -35,6 +38,7 @@ public class FindMenteeList extends AppCompatActivity {
 
 
     private Toolbar toolbar;
+    private BottomNavigationView navigationView;
     final private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private Button filter_BTN;
     private FloatingActionButton newPost_FAB;
@@ -63,6 +67,7 @@ public class FindMenteeList extends AppCompatActivity {
         filter_BTN = findViewById(R.id.filter_BTN_FindMenteeList);
         newPost_FAB = findViewById(R.id.newPost_FAB_FindMenteeList);
         findMentee_LV = findViewById(R.id.findMentee_LV_FindMenteeList);
+        navigationView = findViewById(R.id.navigation_bar_FindMenteeList);
 
         format = new SimpleDateFormat("yyyy. MM. dd");
 
@@ -124,6 +129,23 @@ public class FindMenteeList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(FindMenteeList.this, NewFindMenteePost.class);
                 startActivity(intent);
+            }
+        });
+
+        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.find_mentor:
+                        Intent intent = new Intent(FindMenteeList.this, FindMentorList.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.mypage:
+                        return true;
+                    case R.id.to_home:
+                        finish();
+                }
+                return false;
             }
         });
     }

@@ -5,7 +5,7 @@
         android:title="멘토찾기"
         android:icon="@drawable/ic_my_location"/>
     <item
-        android:id="@+id/home"
+        android:id="@+id/to_home"
         android:title="메인"
         android:icon="@drawable/ic_home"/>
     <item
