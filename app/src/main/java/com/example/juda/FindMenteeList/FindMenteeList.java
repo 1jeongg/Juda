@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -13,23 +12,27 @@ import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class FindMenteeList extends AppCompatActivity {
 
     final private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private FindMenteeListAdapter mAdapter = null;
     private EditText search_ET;
     private Button search_BTN, filter_BTN;
     private FloatingActionButton newPost_FAB;
     private ListView findMentee_LV;
-    private List<String> menteePostKey = null;
-    private List<String> menteePostTitle = new ArrayList<>();
+    private FindMenteePostData dbData[];
+    private FindMenteeListAdapter mAdapter = null;
+
+    private SimpleDateFormat format;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,27 +52,9 @@ public class FindMenteeList extends AppCompatActivity {
         newPost_FAB = findViewById(R.id.newPost_FAB_FindMenteeList);
         findMentee_LV = findViewById(R.id.findMentee_LV_FindMenteeList);
 
+        format = new SimpleDateFormat("yyyy. MM. dd");
+
         getMenteePostList();
-
-//        show sample data
-//        setSampleAdapter();
-    }
-
-    /**
-     * This method show sample data on ListView
-     */
-    private void setSampleAdapter() {
-        List<String> sampleListData = new ArrayList<>();
-        sampleListData.add("post_1");
-        sampleListData.add("post_2");
-        sampleListData.add("post_3");
-        sampleListData.add("post_4");
-        sampleListData.add("post_5");
-        sampleListData.add("post_6");
-        sampleListData.add("post_7");
-        sampleListData.add("post_8");
-        ArrayAdapter<String> sampleAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sampleListData);
-        findMentee_LV.setAdapter(sampleAdapter);
     }
 
     /**
@@ -77,17 +62,28 @@ public class FindMenteeList extends AppCompatActivity {
      * Get all data under 'MenteePost' and save all at menteePostHashMap
      */
     private void getMenteePostList() {
-        db.collection("user")
+        db.collection("postProvider")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             List<String> temp;
+                            int i = 0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("PIGMONGKEY", document.getId() + " => " + document.getData());
-                                Log.d("PIGMONGKEY", document.getId() + " => " + document.getData());
-                                menteePostTitle.add(document.getId());
+                                Log.d("PIGMONGKEY", document.getId() + " => " + document.get("date"));
+
+                                Timestamp temp_timestamp = (Timestamp) document.get("date");
+                                Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
+
+                                dbData[i++] = new FindMenteePostData(
+                                        (String) document.get("author"),
+                                        (String) document.get("title"),
+                                        (String) document.get("content"),
+                                        format.format(temp_time),
+                                        (String) document.get("tag1"),
+                                        (String) document.get("tag2")
+                                );
                             }
                             setMenteePostListAdapter();
                         } else {
@@ -99,7 +95,7 @@ public class FindMenteeList extends AppCompatActivity {
     }
 
     private void setMenteePostListAdapter() {
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menteePostTitle);
-        findMentee_LV.setAdapter(mAdapter);
+//        mAdapter = new FindMenteeListAdapter(getApplicationContext(), dbData);
+//        findMentee_LV.setAdapter(mAdapter);
     }
 }
