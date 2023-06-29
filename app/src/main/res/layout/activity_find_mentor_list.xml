@@ -19,7 +19,7 @@
         android:layout_margin="16dp"
         android:contentDescription="add floating button"
         app:fabSize="normal"
-        app:maxImageSize="58dp"
+        app:maxImageSize="60dp"
         app:srcCompat="@drawable/new_post_button_icon"
         app:backgroundTint="@null"
         app:tint="@null"/>

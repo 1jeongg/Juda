@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/basic_tool_bar_NewFindMentee"
-        layout="@layout/tool_bar_basic" />
+        layout="@layout/tool_bar_basic_no_logo_find_mentee" />
 
     <LinearLayout
         android:id="@+id/margin"
