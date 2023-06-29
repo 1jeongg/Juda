@@ -14,9 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.juda.FindMenteeList.FindMenteeListAdapter;
-import com.example.juda.FindMenteeList.FindMenteePostData;
-import com.example.juda.PostInfo.PostInfo;
+import com.example.juda.FindMenteePostInfo.FindMenteePostInfo;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -108,7 +106,7 @@ public class FindMentorList extends AppCompatActivity {
         findMentor_LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(FindMentorList.this, PostInfo.class);
+                Intent intent = new Intent(FindMentorList.this, FindMenteePostInfo.class);
                 intent.putExtra("ID", mAdapter.getItem(position).getID());
                 startActivity(intent);
             }
