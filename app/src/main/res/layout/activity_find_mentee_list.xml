@@ -115,7 +115,6 @@
 
     </LinearLayout>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/newPost_FAB_FindMenteeList"
         android:layout_width="wrap_content"
