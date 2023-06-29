@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Juda" parent="Theme.AppCompat.Light">
+    <style name="Theme.Juda" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#ffffff</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,8 +12,5 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-    </style>
-    <style name="ActionBarTextColor" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">#000000</item>
     </style>
 </resources>
