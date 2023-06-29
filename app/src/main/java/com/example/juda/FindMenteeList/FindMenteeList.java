@@ -2,8 +2,12 @@ package com.example.juda.FindMenteeList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -26,6 +30,8 @@ import kotlin.jvm.functions.FunctionN;
 
 public class FindMenteeList extends AppCompatActivity {
 
+
+    private Toolbar toolbar;
     final private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private EditText search_ET;
     private Button search_BTN, filter_BTN;
@@ -48,6 +54,10 @@ public class FindMenteeList extends AppCompatActivity {
      * get ID and Connect
      */
     private void Init() {
+        toolbar = findViewById(R.id.basic_tool_bar_FindMenteeList);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+
         search_ET = findViewById(R.id.search_ET_FindMenteeList);
         search_BTN = findViewById(R.id.search_BTN_FindMenteeList);
         filter_BTN = findViewById(R.id.filter_BTN_FindMenteeList);
@@ -56,7 +66,7 @@ public class FindMenteeList extends AppCompatActivity {
 
         format = new SimpleDateFormat("yyyy. MM. dd");
 
-        getMenteePostList();
+//        getMenteePostList();
     }
 
     /**
@@ -100,5 +110,33 @@ public class FindMenteeList extends AppCompatActivity {
     private void setMenteePostListAdapter(List<FindMenteePostData> dbData) {
         mAdapter = new FindMenteeListAdapter(getApplicationContext(), dbData);
         findMentee_LV.setAdapter(mAdapter);
+    }
+
+    /**
+     * 툴바 설정하는 함수
+     * @param menu The options menu in which you place your items.
+     *
+     * @return true
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater ().inflate (R.menu.only_search_menu, menu);
+        return true;
+    }
+
+    /**
+     * 툴바 항목 클릭 리스너
+     * @param item The menu item that was selected.
+     *
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search:
+                return true;
+            default:
+                return true;
+        }
     }
 }
