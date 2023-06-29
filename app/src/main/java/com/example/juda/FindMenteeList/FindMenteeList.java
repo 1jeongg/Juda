@@ -18,11 +18,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import kotlin.jvm.functions.FunctionN;
 
 public class FindMenteeList extends AppCompatActivity {
 
@@ -31,6 +28,7 @@ public class FindMenteeList extends AppCompatActivity {
     private Button search_BTN, filter_BTN;
     private FloatingActionButton newPost_FAB;
     private ListView findMentee_LV;
+    private FindMenteePostData dbData[];
     private FindMenteeListAdapter mAdapter = null;
 
     private SimpleDateFormat format;
@@ -72,23 +70,22 @@ public class FindMenteeList extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             List<String> temp;
                             int i = 0;
-                            List<FindMenteePostData> dbData = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("PIGMONGKEY", document.getId() + " => " + document.get("date"));
 
                                 Timestamp temp_timestamp = (Timestamp) document.get("date");
                                 Date temp_time = new Date(temp_timestamp.getSeconds()*1000);
 
-                                dbData.add(new FindMenteePostData(
+                                dbData[i++] = new FindMenteePostData(
                                         (String) document.get("author"),
                                         (String) document.get("title"),
                                         (String) document.get("content"),
                                         format.format(temp_time),
                                         (String) document.get("tag1"),
                                         (String) document.get("tag2")
-                                ));
+                                );
                             }
-                            setMenteePostListAdapter(dbData);
+                            setMenteePostListAdapter();
                         } else {
                             Log.d("PIGMONGKEY", "Error getting documents: ", task.getException());
                         }
@@ -97,8 +94,8 @@ public class FindMenteeList extends AppCompatActivity {
 
     }
 
-    private void setMenteePostListAdapter(List<FindMenteePostData> dbData) {
-        mAdapter = new FindMenteeListAdapter(getApplicationContext(), dbData);
-        findMentee_LV.setAdapter(mAdapter);
+    private void setMenteePostListAdapter() {
+//        mAdapter = new FindMenteeListAdapter(getApplicationContext(), dbData);
+//        findMentee_LV.setAdapter(mAdapter);
     }
 }
