@@ -1,4 +1,4 @@
-package com.example.juda.PostInfo;
+package com.example.juda.FindMenteePostInfo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class PostInfo extends AppCompatActivity {
+public class FindMenteePostInfo extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView writer_TV, senior_TV, title_TV, date_TV, contents_TV;
@@ -43,7 +39,7 @@ public class PostInfo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_info);
+        setContentView(R.layout.activity_find_mentee_post_info);
         init();
     }
 
@@ -53,13 +49,13 @@ public class PostInfo extends AppCompatActivity {
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        writer_TV = findViewById(R.id.writer_TV_PostInfo);
-        senior_TV = findViewById(R.id.senior_TV_PostInfo);
-        title_TV = findViewById(R.id.title_TV_PostInfo);
-        date_TV = findViewById(R.id.date_TV_PostInfo);
-        contents_TV = findViewById(R.id.content_TV_PostInfo);
-        signup_BTN = findViewById(R.id.signup_BTN_PostInfo);
-        inquire_BTN = findViewById(R.id.inquire_BTN_PostInfo);
+        writer_TV = findViewById(R.id.writer_TV_MenteePostInfo);
+        senior_TV = findViewById(R.id.senior_TV_MenteePostInfo);
+        title_TV = findViewById(R.id.title_TV_MenteePostInfo);
+        date_TV = findViewById(R.id.date_TV_MenteePostInfo);
+        contents_TV = findViewById(R.id.content_TV_MenteePostInfo);
+        signup_BTN = findViewById(R.id.signup_BTN_MenteePostInfo);
+        inquire_BTN = findViewById(R.id.inquire_BTN_MenteePostInfo);
         format = new SimpleDateFormat("yyyy. MM. dd");
         getIntentData();
         getPostInfo();
@@ -151,11 +147,9 @@ public class PostInfo extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.complite:
-            case android.R.id.home:
-                Intent intent = new Intent(PostInfo.this, FindMenteeList.class);
+                Intent intent = new Intent(FindMenteePostInfo.this, FindMenteeList.class);
                 startActivity(intent);
-            default:
-                return true;
         }
+        return false;
     }
 }

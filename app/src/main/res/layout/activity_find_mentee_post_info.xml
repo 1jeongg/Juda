@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostInfo.PostInfo">
+    tools:context=".FindMenteePostInfo.FindMenteePostInfo">
 
     <include
         android:id="@+id/basic_tool_bar_PostInfo"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/writer_TV_PostInfo"
+                android:id="@+id/writer_TV_MenteePostInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/senior_TV_PostInfo"
+                android:id="@+id/senior_TV_MenteePostInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="SENIOR"
@@ -42,10 +42,10 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/writer_TV_PostInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/writer_TV_MenteePostInfo" />
 
             <TextView
-                android:id="@+id/title_TV_PostInfo"
+                android:id="@+id/title_TV_MenteePostInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
@@ -53,10 +53,10 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/senior_TV_PostInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/senior_TV_MenteePostInfo" />
 
             <TextView
-                android:id="@+id/date_TV_PostInfo"
+                android:id="@+id/date_TV_MenteePostInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -64,10 +64,10 @@
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_TV_PostInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/title_TV_MenteePostInfo" />
 
             <TextView
-                android:id="@+id/content_TV_PostInfo"
+                android:id="@+id/content_TV_MenteePostInfo"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="20dp"
@@ -77,7 +77,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/date_TV_PostInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/date_TV_MenteePostInfo" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -90,7 +90,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <Button
-                    android:id="@+id/signup_BTN_PostInfo"
+                    android:id="@+id/signup_BTN_MenteePostInfo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
@@ -100,7 +100,7 @@
                     android:textColor="#000000" />
 
                 <Button
-                    android:id="@+id/inquire_BTN_PostInfo"
+                    android:id="@+id/inquire_BTN_MenteePostInfo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
