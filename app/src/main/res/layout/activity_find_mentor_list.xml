@@ -106,7 +106,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/findMentee_LV_FindMentorList"
+            android:id="@+id/findMentor_LV_FindMentorList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

@@ -115,14 +115,6 @@ public class FindMenteeList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        filter_BTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FindMenteeList.this, PostInfo.class);
-                startActivity(intent);
-            }
-        });
     }
 
     /**
