@@ -49,13 +49,13 @@ public class FindMenteePostInfo extends AppCompatActivity {
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        writer_TV = findViewById(R.id.writer_TV_PostInfo);
-        senior_TV = findViewById(R.id.senior_TV_PostInfo);
-        title_TV = findViewById(R.id.title_TV_PostInfo);
-        date_TV = findViewById(R.id.date_TV_PostInfo);
-        contents_TV = findViewById(R.id.content_TV_PostInfo);
-        signup_BTN = findViewById(R.id.signup_BTN_PostInfo);
-        inquire_BTN = findViewById(R.id.inquire_BTN_PostInfo);
+        writer_TV = findViewById(R.id.writer_TV_MenteePostInfo);
+        senior_TV = findViewById(R.id.senior_TV_MenteePostInfo);
+        title_TV = findViewById(R.id.title_TV_MenteePostInfo);
+        date_TV = findViewById(R.id.date_TV_MenteePostInfo);
+        contents_TV = findViewById(R.id.content_TV_MenteePostInfo);
+        signup_BTN = findViewById(R.id.signup_BTN_MenteePostInfo);
+        inquire_BTN = findViewById(R.id.inquire_BTN_MenteePostInfo);
         format = new SimpleDateFormat("yyyy. MM. dd");
         getIntentData();
         getPostInfo();
