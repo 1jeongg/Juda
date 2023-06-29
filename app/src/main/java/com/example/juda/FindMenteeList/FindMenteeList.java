@@ -2,6 +2,8 @@ package com.example.juda.FindMenteeList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.juda.MainActivity;
+import com.example.juda.PostInfo.PostInfo;
 import com.example.juda.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -114,7 +118,9 @@ public class FindMenteeList extends AppCompatActivity {
         findMentee_LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(FindMenteeList.this, PostInfo.class);
+                intent.putExtra("title", mAdapter.getItem(position).getTitle());
+                startActivity(intent);
             }
         });
     }
